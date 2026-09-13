@@ -15,7 +15,7 @@ function MobileNavItem({ to, icon: Icon, label }: { to: string; icon: LucideIcon
     <Link
       to={to}
       className={`flex-1 flex flex-col items-center py-2 gap-1 text-xs font-medium transition-colors ${
-        isActive ? "text-green-700" : "text-gray-400"
+        isActive ? "text-agri-primary" : "text-agri-muted"
       }`}
     >
       <Icon size={20} />
@@ -27,8 +27,7 @@ function MobileNavItem({ to, icon: Icon, label }: { to: string; icon: LucideIcon
 export default function MobileNav() {
   return (
     <nav
-      className="md:hidden fixed bottom-0 left-0 right-0 z-30 flex border-t"
-      style={{ background: "#fff", borderColor: "#e2f0e5" }}
+      className="md:hidden fixed bottom-0 left-0 right-0 z-30 flex border-t border-agri-border agri-glass"
     >
       {items.map(({ to, icon, label }) => (
         <MobileNavItem key={to} to={to} icon={icon} label={label} />

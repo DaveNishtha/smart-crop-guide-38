@@ -29,13 +29,13 @@ export default function CropRecommendation() {
   }
 
   return (
-    <div className="flex-1 overflow-y-auto" style={{ background: "#F7FAF7" }}>
+    <div className="flex-1 overflow-y-auto" style={{ background: "var(--agri-bg)" }}>
       <Topbar title={t.cropRecommendation} />
       <div className="p-5 md:p-6 max-w-2xl">
-        <p className="text-sm text-gray-500 mb-6">Enter your farm details to get the best crop recommendation for your conditions.</p>
+        <p className="text-sm text-agri-muted mb-6">Enter your farm details to get the best crop recommendation for your conditions.</p>
 
         {/* Form */}
-        <div className="bg-white rounded-2xl p-5 border mb-5" style={{ borderColor: "#e2f0e5" }}>
+        <div className="bg-agri-card rounded-2xl p-5 border mb-5" style={{ borderColor: "var(--agri-border)" }}>
           <div className="grid grid-cols-2 gap-4">
             {[
               { label: "Soil Type", key: "soil", type: "select", opts: soilTypes },
@@ -48,13 +48,13 @@ export default function CropRecommendation() {
               { label: "Previous Crop", key: "prev", type: "text", placeholder: "e.g. Wheat" },
             ].map(({ label, key, type, opts, placeholder }) => (
               <div key={key}>
-                <label className="text-xs font-semibold text-gray-600 mb-1.5 block">{label}</label>
+                <label className="text-xs font-semibold text-agri-muted mb-1.5 block">{label}</label>
                 {type === "select" ? (
                   <select
                     value={form[key as keyof typeof form]}
                     onChange={e => set(key, e.target.value)}
                     className="w-full rounded-xl border px-3 py-2.5 text-sm outline-none focus:border-green-500"
-                    style={{ borderColor: "#e2f0e5", background: "white", color: "#172018" }}
+                    style={{ borderColor: "var(--agri-border)", background: "white", color: "var(--agri-ink)" }}
                   >
                     <option value="">Select…</option>
                     {opts?.map(o => <option key={o} value={o}>{o}</option>)}
@@ -66,7 +66,7 @@ export default function CropRecommendation() {
                     onChange={e => set(key, e.target.value)}
                     placeholder={placeholder}
                     className="w-full rounded-xl border px-3 py-2.5 text-sm outline-none focus:border-green-500"
-                    style={{ borderColor: "#e2f0e5", color: "#172018" }}
+                    style={{ borderColor: "var(--agri-border)", color: "var(--agri-ink)" }}
                   />
                 )}
               </div>
@@ -88,18 +88,18 @@ export default function CropRecommendation() {
         {result && (
           <div className="fade-in-up space-y-4">
             {/* Top recommendation */}
-            <div className="bg-white rounded-2xl p-5 border" style={{ borderColor: "#bbf7d0", boxShadow: "0 0 0 2px #bbf7d0" }}>
+            <div className="bg-agri-card rounded-2xl p-5 border" style={{ borderColor: "#bbf7d0", boxShadow: "0 0 0 2px #bbf7d0" }}>
               <div className="flex items-center gap-3 mb-3">
                 <div className="w-12 h-12 rounded-2xl flex items-center justify-center" style={{ background: "#DCFCE7" }}>
                   <Sprout size={22} style={{ color: "#2F7D32" }} />
                 </div>
                 <div>
-                  <p className="text-xs font-semibold text-gray-500 mb-0.5">Top Recommendation</p>
-                  <h2 className="text-xl font-extrabold" style={{ color: "#172018" }}>Tomato</h2>
+                  <p className="text-xs font-semibold text-agri-muted mb-0.5">Top Recommendation</p>
+                  <h2 className="text-xl font-extrabold" style={{ color: "var(--agri-ink)" }}>Tomato</h2>
                 </div>
                 <div className="ml-auto text-right">
                   <p className="text-2xl font-extrabold" style={{ color: "#16A34A" }}>94%</p>
-                  <p className="text-xs text-gray-400">Suitability</p>
+                  <p className="text-xs text-agri-muted">Suitability</p>
                 </div>
               </div>
 
@@ -108,8 +108,8 @@ export default function CropRecommendation() {
                 <div className="h-2 rounded-full" style={{ width: "94%", background: "#16A34A" }} />
               </div>
 
-              <h3 className="text-xs font-bold mb-2" style={{ color: "#172018" }}>Why this crop?</h3>
-              <ul className="text-xs text-gray-600 space-y-1.5">
+              <h3 className="text-xs font-bold mb-2" style={{ color: "var(--agri-ink)" }}>Why this crop?</h3>
+              <ul className="text-xs text-agri-muted space-y-1.5">
                 {["Loamy soil matches tomato's nutrient needs perfectly", "28°C temperature is optimal for fruit development", "Kharif season timing aligns with tomato growing cycle", "Previous wheat crop improves soil nitrogen availability"].map((r, i) => (
                   <li key={i} className="flex items-start gap-2">
                     <span style={{ color: "#16A34A" }}>✓</span> {r}
@@ -119,14 +119,14 @@ export default function CropRecommendation() {
             </div>
 
             {/* Alternatives */}
-            <div className="bg-white rounded-2xl p-5 border" style={{ borderColor: "#e2f0e5" }}>
-              <h3 className="text-sm font-bold mb-3" style={{ color: "#172018" }}>Alternative Crops</h3>
+            <div className="bg-agri-card rounded-2xl p-5 border" style={{ borderColor: "var(--agri-border)" }}>
+              <h3 className="text-sm font-bold mb-3" style={{ color: "var(--agri-ink)" }}>Alternative Crops</h3>
               {altCrops.map(c => (
                 <div key={c.name} className="flex items-center gap-3 mb-2.5">
                   <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: "#f0fdf4" }}>
                     <Sprout size={14} style={{ color: "#2F7D32" }} />
                   </div>
-                  <span className="text-sm font-medium flex-1" style={{ color: "#172018" }}>{c.name}</span>
+                  <span className="text-sm font-medium flex-1" style={{ color: "var(--agri-ink)" }}>{c.name}</span>
                   <div className="flex-1 h-1.5 rounded-full" style={{ background: "#e5e7eb" }}>
                     <div className="h-1.5 rounded-full" style={{ width: `${c.match}%`, background: "#86efac" }} />
                   </div>

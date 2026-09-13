@@ -23,8 +23,8 @@ function NavItem({ to, icon: Icon, label, collapsed }: { to: string; icon: Lucid
       to={to}
       className={`flex items-center gap-3 px-3 py-2.5 rounded-lg mb-0.5 transition-all duration-150 group ${
         isActive
-          ? "bg-green-600 text-white"
-          : "text-green-200 hover:bg-green-800 hover:text-white"
+          ? "bg-gradient-to-r from-agri-primary to-agri-primary-strong text-white shadow-sm"
+          : "text-green-100/70 hover:bg-white/10 hover:text-white"
       }`}
       title={collapsed ? label : undefined}
     >
@@ -45,15 +45,15 @@ export default function Sidebar() {
       className="hidden md:flex flex-col h-screen sticky top-0 transition-all duration-300"
       style={{
         width: collapsed ? 68 : 240,
-        background: "#14532D",
-        borderRight: "1px solid #166534",
+        background: "var(--agri-sidebar)",
+        borderRight: "1px solid var(--agri-sidebar-border)",
         flexShrink: 0,
       }}
     >
       {/* Logo */}
-      <div className="flex items-center gap-3 px-4 py-5 border-b border-green-800">
+      <div className="flex items-center gap-3 px-4 py-5 border-b border-agri-sidebar-border">
         <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0"
-          style={{ background: "#2F7D32" }}>
+          style={{ background: "linear-gradient(135deg, var(--agri-primary), var(--agri-primary-strong))" }}>
           <Leaf size={16} color="white" />
         </div>
         {!collapsed && (
@@ -74,7 +74,7 @@ export default function Sidebar() {
       {/* Collapse toggle */}
       <button
         onClick={() => setCollapsed(!collapsed)}
-        className="flex items-center justify-center py-3 border-t border-green-800 text-green-400 hover:text-white transition-colors"
+        className="flex items-center justify-center py-3 border-t border-agri-sidebar-border text-green-200/70 hover:text-white transition-colors"
       >
         {collapsed ? <ChevronRight size={16} /> : <ChevronLeft size={16} />}
       </button>

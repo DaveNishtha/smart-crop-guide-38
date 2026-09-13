@@ -12,6 +12,7 @@ import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { LanguageProvider } from "../context/LanguageContext";
+import { ThemeProvider } from "../context/ThemeContext";
 import Sidebar from "../components/agrismart/Sidebar";
 import MobileNav from "../components/agrismart/MobileNav";
 
@@ -124,6 +125,7 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
+      <ThemeProvider>
       <LanguageProvider>
         <div className="flex h-screen overflow-hidden">
           <Sidebar />
@@ -134,6 +136,7 @@ function RootComponent() {
           <MobileNav />
         </div>
       </LanguageProvider>
+      </ThemeProvider>
     </QueryClientProvider>
   );
 }
