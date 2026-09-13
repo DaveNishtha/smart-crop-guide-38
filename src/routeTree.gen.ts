@@ -10,33 +10,63 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CropRecommendationRouteImport } from './routes/crop-recommendation'
+import { Route as DashboardRouteImport } from './routes/dashboard'
+import { Route as DiagnosisRouteImport } from './routes/diagnosis'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CropRecommendationRoute = CropRecommendationRouteImport.update({
+  id: '/crop-recommendation',
+  path: '/crop-recommendation',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DashboardRoute = DashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DiagnosisRoute = DiagnosisRouteImport.update({
+  id: '/diagnosis',
+  path: '/diagnosis',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/crop-recommendation': typeof CropRecommendationRoute
+  '/dashboard': typeof DashboardRoute
+  '/diagnosis': typeof DiagnosisRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/crop-recommendation': typeof CropRecommendationRoute
+  '/dashboard': typeof DashboardRoute
+  '/diagnosis': typeof DiagnosisRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/crop-recommendation': typeof CropRecommendationRoute
+  '/dashboard': typeof DashboardRoute
+  '/diagnosis': typeof DiagnosisRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/crop-recommendation' | '/dashboard' | '/diagnosis'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/crop-recommendation' | '/dashboard' | '/diagnosis'
+  id: '__root__' | '/' | '/crop-recommendation' | '/dashboard' | '/diagnosis'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CropRecommendationRoute: typeof CropRecommendationRoute
+  DashboardRoute: typeof DashboardRoute
+  DiagnosisRoute: typeof DiagnosisRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +78,35 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/crop-recommendation': {
+      id: '/crop-recommendation'
+      path: '/crop-recommendation'
+      fullPath: '/crop-recommendation'
+      preLoaderRoute: typeof CropRecommendationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dashboard': {
+      id: '/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof DashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/diagnosis': {
+      id: '/diagnosis'
+      path: '/diagnosis'
+      fullPath: '/diagnosis'
+      preLoaderRoute: typeof DiagnosisRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CropRecommendationRoute: CropRecommendationRoute,
+  DashboardRoute: DashboardRoute,
+  DiagnosisRoute: DiagnosisRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
