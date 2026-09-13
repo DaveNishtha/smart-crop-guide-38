@@ -1,14 +1,16 @@
-# Welcome to your Lovable project
+# AgriSmart Essentials
+
+Set up the attached AgriSmart React frontend code trimmed to 3 main pages: Dashboard, Disease Detection (Crop Diagnosis), and Crop Recommendation. Make the app navigate directly to the Dashboard as the home route, update the sidebar and mobile navigation to only include these 3 pages, and remove unused route pages. Keep the existing UI styling and component logic intact.
 
 This project was built with [Lovable](https://lovable.dev).
 
 ## Build with Lovable
 
-Open your project in the [Lovable editor](https://lovable.dev) and keep building.
+Continue developing this project in the [Lovable editor](https://lovable.dev/projects/e12023e1-d629-4d06-b40d-cb0def15d18b).
 
 - **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: connect the project to GitHub and every change made in Lovable is committed straight to your repository.
-- **Full ownership**: this code is yours. Push to your repository and your changes sync back into Lovable, ready for your next prompt.
+- **Stay in sync**: every change made in Lovable is committed straight to this repository.
+- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
 
 ## Development
 
@@ -20,10 +22,3 @@ cd <repository-name>
 npm i
 npm run dev
 ```
-
-## Built with
-
-- TanStack Start
-- TypeScript
-- React
-- Tailwind CSS
