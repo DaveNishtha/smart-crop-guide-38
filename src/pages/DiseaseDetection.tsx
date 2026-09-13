@@ -63,10 +63,10 @@ export default function DiseaseDetection() {
   if (stage === "result") return <ResultView imageUrl={imageUrl} onReset={reset} t={t} />;
 
   return (
-    <div className="flex-1 overflow-y-auto" style={{ background: "#F7FAF7" }}>
+    <div className="flex-1 overflow-y-auto" style={{ background: "var(--agri-bg)" }}>
       <Topbar title={t.aiCropDiagnosis} />
       <div className="p-5 md:p-6 max-w-2xl">
-        <p className="text-gray-500 text-sm mb-6">{t.uploadInstruction}</p>
+        <p className="text-agri-muted text-sm mb-6">{t.uploadInstruction}</p>
 
         {/* Upload Zone */}
         <div
@@ -92,9 +92,9 @@ export default function DiseaseDetection() {
               <img src={imageUrl} alt="Selected leaf" className="max-h-48 mx-auto rounded-xl object-contain" />
               <button
                 onClick={(e) => { e.stopPropagation(); setImageUrl(null); }}
-                className="absolute top-2 right-2 w-6 h-6 rounded-full bg-white shadow flex items-center justify-center"
+                className="absolute top-2 right-2 w-6 h-6 rounded-full bg-agri-card shadow flex items-center justify-center"
               >
-                <X size={12} className="text-gray-500" />
+                <X size={12} className="text-agri-muted" />
               </button>
               <p className="text-xs text-green-600 font-semibold mt-3">Image ready for analysis</p>
             </div>
@@ -104,8 +104,8 @@ export default function DiseaseDetection() {
                 style={{ background: "#DCFCE7" }}>
                 <Upload size={24} style={{ color: "#2F7D32" }} />
               </div>
-              <p className="font-bold text-sm mb-1" style={{ color: "#172018" }}>{t.dragDrop}</p>
-              <p className="text-xs text-gray-400 mb-4">{t.supportedFormats}</p>
+              <p className="font-bold text-sm mb-1" style={{ color: "var(--agri-ink)" }}>{t.dragDrop}</p>
+              <p className="text-xs text-agri-muted mb-4">{t.supportedFormats}</p>
               <div className="flex gap-2 justify-center">
                 <button
                   onClick={(e) => { e.stopPropagation(); fileRef.current?.click(); }}
@@ -128,24 +128,24 @@ export default function DiseaseDetection() {
         {/* Crop + Stage selects */}
         <div className="grid grid-cols-2 gap-3 mb-5">
           <div>
-            <label className="text-xs font-semibold text-gray-600 mb-1.5 block">{t.selectCrop}</label>
+            <label className="text-xs font-semibold text-agri-muted mb-1.5 block">{t.selectCrop}</label>
             <select
               value={crop}
               onChange={e => setCrop(e.target.value)}
               className="w-full rounded-xl border px-3 py-2.5 text-sm outline-none focus:border-green-500 transition-colors"
-              style={{ borderColor: "#e2f0e5", background: "white", color: "#172018" }}
+              style={{ borderColor: "var(--agri-border)", background: "white", color: "var(--agri-ink)" }}
             >
               <option value="">Select crop…</option>
               {CROPS.map(c => <option key={c} value={c}>{c}</option>)}
             </select>
           </div>
           <div>
-            <label className="text-xs font-semibold text-gray-600 mb-1.5 block">{t.growthStage}</label>
+            <label className="text-xs font-semibold text-agri-muted mb-1.5 block">{t.growthStage}</label>
             <select
               value={growthStage}
               onChange={e => setGrowthStage(e.target.value)}
               className="w-full rounded-xl border px-3 py-2.5 text-sm outline-none focus:border-green-500 transition-colors"
-              style={{ borderColor: "#e2f0e5", background: "white", color: "#172018" }}
+              style={{ borderColor: "var(--agri-border)", background: "white", color: "var(--agri-ink)" }}
             >
               <option value="">Select stage…</option>
               {GROWTH_STAGES.map(s => <option key={s} value={s}>{s}</option>)}
@@ -166,7 +166,7 @@ export default function DiseaseDetection() {
         {/* Tips */}
         <div className="mt-5 p-4 rounded-xl border" style={{ background: "#f0fdf4", borderColor: "#bbf7d0" }}>
           <p className="text-xs font-bold mb-2" style={{ color: "#14532D" }}>📸 Tips for best results</p>
-          <ul className="text-xs text-gray-600 space-y-1 list-disc list-inside">
+          <ul className="text-xs text-agri-muted space-y-1 list-disc list-inside">
             <li>Use good natural lighting</li>
             <li>Focus on affected area of the leaf</li>
             <li>Avoid blurry or dark photos</li>
@@ -187,7 +187,7 @@ function ScanningView({ progress, imageUrl, t }: { progress: number; imageUrl: s
   ];
 
   return (
-    <div className="flex-1 overflow-y-auto" style={{ background: "#F7FAF7" }}>
+    <div className="flex-1 overflow-y-auto" style={{ background: "var(--agri-bg)" }}>
       <Topbar title={t.aiCropDiagnosis} />
       <div className="p-5 md:p-6 max-w-xl flex flex-col items-center">
         {/* Image with scan overlay */}
@@ -208,8 +208,8 @@ function ScanningView({ progress, imageUrl, t }: { progress: number; imageUrl: s
           ))}
         </div>
 
-        <p className="text-base font-bold mb-1" style={{ color: "#172018" }}>{t.analyzing}</p>
-        <p className="text-xs text-gray-400 mb-5">{Math.round(progress)}% complete</p>
+        <p className="text-base font-bold mb-1" style={{ color: "var(--agri-ink)" }}>{t.analyzing}</p>
+        <p className="text-xs text-agri-muted mb-5">{Math.round(progress)}% complete</p>
 
         {/* Progress bar */}
         <div className="w-full max-w-xs h-2 rounded-full mb-6" style={{ background: "#DCFCE7" }}>
@@ -230,8 +230,8 @@ function ScanningView({ progress, imageUrl, t }: { progress: number; imageUrl: s
               ) : (
                 <Circle size={16} className="text-gray-300 flex-shrink-0" />
               )}
-              <span className={`text-sm ${step.done ? "font-semibold" : step.active ? "font-medium" : "text-gray-400"}`}
-                style={{ color: step.done ? "#16A34A" : step.active ? "#172018" : undefined }}>
+              <span className={`text-sm ${step.done ? "font-semibold" : step.active ? "font-medium" : "text-agri-muted"}`}
+                style={{ color: step.done ? "#16A34A" : step.active ? "var(--agri-ink)" : undefined }}>
                 {step.label}
               </span>
             </div>
@@ -244,28 +244,28 @@ function ScanningView({ progress, imageUrl, t }: { progress: number; imageUrl: s
 
 function ResultView({ imageUrl, onReset, t }: { imageUrl: string | null; onReset: () => void; t: ReturnType<typeof useLanguage>["t"] }) {
   return (
-    <div className="flex-1 overflow-y-auto" style={{ background: "#F7FAF7" }}>
+    <div className="flex-1 overflow-y-auto" style={{ background: "var(--agri-bg)" }}>
       <Topbar title={t.aiCropDiagnosis} />
       <div className="p-5 md:p-6 max-w-2xl">
         {/* Result header */}
-        <div className="bg-white rounded-2xl p-5 border mb-4 fade-in-up" style={{ borderColor: "#e2f0e5" }}>
+        <div className="bg-agri-card rounded-2xl p-5 border mb-4 fade-in-up" style={{ borderColor: "var(--agri-border)" }}>
           <div className="flex gap-4 items-start">
             {imageUrl && (
-              <img src={imageUrl} alt="Analyzed leaf" className="w-20 h-20 rounded-xl object-cover flex-shrink-0 border" style={{ borderColor: "#e2f0e5" }} />
+              <img src={imageUrl} alt="Analyzed leaf" className="w-20 h-20 rounded-xl object-cover flex-shrink-0 border" style={{ borderColor: "var(--agri-border)" }} />
             )}
             <div className="flex-1">
               <div className="flex items-center gap-2 mb-1">
                 <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-red-100 text-red-600">Disease Detected</span>
               </div>
-              <h2 className="text-xl font-extrabold" style={{ color: "#172018" }}>Early Blight</h2>
-              <p className="text-xs text-gray-500 mt-0.5">Alternaria solani · Tomato</p>
+              <h2 className="text-xl font-extrabold" style={{ color: "var(--agri-ink)" }}>Early Blight</h2>
+              <p className="text-xs text-agri-muted mt-0.5">Alternaria solani · Tomato</p>
             </div>
           </div>
 
           {/* Confidence meter */}
           <div className="mt-4">
             <div className="flex justify-between text-xs font-semibold mb-1.5">
-              <span style={{ color: "#172018" }}>{t.confidence}</span>
+              <span style={{ color: "var(--agri-ink)" }}>{t.confidence}</span>
               <span style={{ color: "#2F7D32" }}>91%</span>
             </div>
             <div className="h-2.5 rounded-full" style={{ background: "#e5e7eb" }}>
@@ -275,19 +275,19 @@ function ResultView({ imageUrl, onReset, t }: { imageUrl: string | null; onReset
         </div>
 
         {/* AI Reasoning */}
-        <div className="bg-white rounded-2xl p-5 border mb-4 fade-in-up" style={{ borderColor: "#e2f0e5" }}>
-          <h3 className="text-sm font-bold mb-2" style={{ color: "#172018" }}>🧠 AI Reasoning</h3>
-          <p className="text-sm text-gray-600 leading-relaxed">
+        <div className="bg-agri-card rounded-2xl p-5 border mb-4 fade-in-up" style={{ borderColor: "var(--agri-border)" }}>
+          <h3 className="text-sm font-bold mb-2" style={{ color: "var(--agri-ink)" }}>🧠 AI Reasoning</h3>
+          <p className="text-sm text-agri-muted leading-relaxed">
             Detected concentric ring patterns characteristic of <em>Alternaria solani</em> with dark brown lesions surrounded by yellow halos. The infection appears to be in early stages, affecting approximately 30% of the leaf surface area.
           </p>
         </div>
 
         {/* Precautions */}
-        <div className="bg-white rounded-2xl p-5 border mb-4 fade-in-up" style={{ borderColor: "#e2f0e5" }}>
-          <h3 className="text-sm font-bold mb-3" style={{ color: "#172018" }}>⚠️ {t.precautions}</h3>
+        <div className="bg-agri-card rounded-2xl p-5 border mb-4 fade-in-up" style={{ borderColor: "var(--agri-border)" }}>
+          <h3 className="text-sm font-bold mb-3" style={{ color: "var(--agri-ink)" }}>⚠️ {t.precautions}</h3>
           <ul className="space-y-2">
             {["Remove and destroy affected leaves immediately", "Avoid overhead watering — use drip irrigation", "Monitor nearby plants for spread", "Ensure proper air circulation"].map((p, i) => (
-              <li key={i} className="flex items-start gap-2 text-sm text-gray-600">
+              <li key={i} className="flex items-start gap-2 text-sm text-agri-muted">
                 <span className="w-1.5 h-1.5 rounded-full mt-1.5 flex-shrink-0" style={{ background: "#F59E0B" }} />
                 {p}
               </li>
@@ -296,11 +296,11 @@ function ResultView({ imageUrl, onReset, t }: { imageUrl: string | null; onReset
         </div>
 
         {/* Recommended actions */}
-        <div className="bg-white rounded-2xl p-5 border mb-5 fade-in-up" style={{ borderColor: "#e2f0e5" }}>
-          <h3 className="text-sm font-bold mb-3" style={{ color: "#172018" }}>✅ {t.recommendedActions}</h3>
+        <div className="bg-agri-card rounded-2xl p-5 border mb-5 fade-in-up" style={{ borderColor: "var(--agri-border)" }}>
+          <h3 className="text-sm font-bold mb-3" style={{ color: "var(--agri-ink)" }}>✅ {t.recommendedActions}</h3>
           <ul className="space-y-2">
             {["Apply copper-based fungicide every 7-10 days", "Spray chlorothalonil (Bravo) at first sign", "Improve soil drainage in affected areas", "Consider resistant tomato varieties for next season"].map((a, i) => (
-              <li key={i} className="flex items-start gap-2 text-sm text-gray-600">
+              <li key={i} className="flex items-start gap-2 text-sm text-agri-muted">
                 <CheckCircle size={13} style={{ color: "#16A34A" }} className="flex-shrink-0 mt-0.5" />
                 {a}
               </li>
