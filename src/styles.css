@@ -142,3 +142,55 @@
     color: var(--color-foreground);
   }
 }
+
+/* AgriSmart theme */
+body {
+  font-family: "Manrope", system-ui, sans-serif;
+  background-color: #f7faf7;
+  color: #172018;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #bbf7d0;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #86efac;
+}
+
+.scan-line {
+  animation: scanDown 2s linear infinite;
+}
+
+@keyframes scanDown {
+  0% { top: 0%; }
+  100% { top: 100%; }
+}
+
+.pulse-ring {
+  animation: pulseRing 1.5s ease-in-out infinite;
+}
+
+@keyframes pulseRing {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.05); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.4s ease forwards;
+}
