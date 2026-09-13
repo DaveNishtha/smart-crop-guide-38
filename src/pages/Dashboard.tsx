@@ -1,4 +1,4 @@
-import { TrendingUp, Droplets, Thermometer, CloudRain, Leaf, Sun, ArrowUpRight, ArrowDownRight } from "lucide-react";
+import { TrendingUp, Droplets, Thermometer, CloudRain, Leaf, Sprout, Sun, ArrowUpRight, ArrowDownRight } from "lucide-react";
 import {
   AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend
 } from "recharts";
@@ -19,7 +19,7 @@ const healthData = [
 type Tone = "green" | "blue" | "amber" | "violet";
 
 const metrics: {
-  key: string; value: string; icon: typeof Leaf; change: string; tone: Tone; trend: "up" | "down" | "flat"; progress: number;
+  key: string; value: string; icon: typeof Leaf | typeof Sprout; change: string; tone: Tone; trend: "up" | "down" | "flat"; progress: number;
 }[] = [
   { key: "farmHealth", value: "88%", icon: TrendingUp, change: "+3%", tone: "green", trend: "up", progress: 88 },
   { key: "cropHealth", value: "82%", icon: Leaf, change: "+5%", tone: "green", trend: "up", progress: 82 },
@@ -60,10 +60,6 @@ const recentAnalyses = [
   { crop: "Wheat", result: "Healthy", confidence: 96, date: "Yesterday, 3:15 PM", status: "healthy" },
   { crop: "Rice", result: "Leaf Spot", confidence: 84, date: "2 days ago", status: "disease" },
 ];
-
-function Sprout({ size = 16, className }: { size?: number; className?: string }) {
-  return <Leaf size={size} className={className} />;
-}
 
 export default function Dashboard() {
   const { t } = useLanguage();
